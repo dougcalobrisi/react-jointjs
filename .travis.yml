@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- '0.12'
+- '0.11'
+- '0.10'
+install:
+- npm install
+- npm install react
+script:
+- npm run build
+deploy:
+  - provider: npm
+    email: doug@calobrisi.com
+    api_key:
+      secure: WSNW39+pZV+oDwjPClox24k4ZdimovOuYD584XEc3GSiYPZV6pJO+X4KlMvJKN3JhgOVC+/NXruAhLV1exrSY7tFcUbC6ENt+T3tWzr11vgSuX80ldZ9P7VFWbg3TDNRaH9rxCfJ8bIGJlb5vc1/yMgyYP8H1FzrQYUQsk6IyFQpso57FrFRBs8DZEYKaCOwHhxkcV1VGcGUbZ6TFdkrTkZObHhvHIdLO+tohdnmgMJkoGHvhYkCQSaW3MdQlmkHMQ8YtoO4d/objXZpJdY1fUhlL0nCOwlbmqjtZNQNF2IVGZAuk6QmmYJKCYt0qhsXp4YEYBItn0bipJQRSTS6RlPv14JbKlTZ2WpgP22pOUGUG2Wceifjxhy/bhw40WqVEjwN7/S3VosDA1h3p7jZud48mUMICs5Ol/B1D7rmlOb+f3m0rorxo7lmwJoqDViFQnkF8ZBpokJB0w5F5jeEotqpIcl8LY1uNGAA48lDofGsDYZLOhqva56FHx5ML9CC5Xr2yIdtNKQ4CBYVW+d1cayAYC6eVc9uE6lMPZfWL+1UHfQ+33WXC9Pb4Z3i7jBwMsutwuJ/J9v2pySOjGP3ebwABOtFDbCvi7ywrdB3tD9MFvmlOFk2wDqIJ4hYGm/CDveBKj3GiDIdDiVpExqHLI6nkeY3QBhpsd1oQr7kJXo=
+    skip_cleanup: true
+    on:
+      tags: true
+      repo: dougcalobrisi/react-jointjs
