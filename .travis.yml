@@ -17,3 +17,11 @@ deploy:
     on:
       tags: true
       repo: dougcalobrisi/react-jointjs
+  - provider: releases
+    api_key:
+      secure: n3wWnFRaSXzf6TX4etSOwvUUbpSIVUJf90XY0PTaVmHy2cQd2E1P2SaAmjBONcnyM6S4cBRCiklfSeO0mgFgPjOv48Nee/6LFWCgk9ATyqSFzV+pt8x2bp5lBRLqPuWKJwdLS+xkFFOkRjFT1Cv3oZ2ntXKYn951zQsmxueRXcZtqSAx9BABytYBqKha0cMUK0c0AUZI77W3nAeKcA8Oem+xBhFItcL0/suJ+QMbvS9b2JkcNExnLC32lvtCyWBEgMDJRlu6JkSO8z/dm6Ygibb72wgF+gh2nuQ8szYleDXBrzntNpMtnFngIwmjQjlY9xFmEYrWxNSO0embFHi0OELuvL8wB62u7C0jdVVd1J9XfHUI2orAp9QCricD4cHYQwb7HC+DXCbSkV6Usmzj11BeAy8wUVpQma76OWF2WiPlcgGmVPTMYxchxEK4DkynQc6NaDA3DPkPrY1cBJ7WWjJEqtq7HwlU4zWst0JTb8qHA1gzYKzaA1baDNwn3TW+1odQ5m9DSpaDCiaLp07doTQxfqJRSi9cumgZII+9UDs1+y8bgD3F/ODtyBzuDytlKyQGSXRohKiHmY/eEHLonioqfB++ixAxa3XMi8/LhW3obT2mzf0/3SjFx7qNrIIxc1vmIhmEQrvwodSxM7HYij5lwIp+c7v4e+axZoAdFj8=
+    file: dist/react-jointjs.min.js
+    skip_cleanup: true
+    on:
+      tags: true
+      repo: dougcalobrisi/react-jointjs

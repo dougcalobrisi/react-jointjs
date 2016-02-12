@@ -11,7 +11,7 @@ export default class ReactJointJS extends Component {
 
   componentWillReceiveProps(nextProps) {
     const oldProps = this.props;
-   }
+  }
 
   componentWillUnmount() {
   }
