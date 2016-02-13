@@ -8,10 +8,9 @@ export default class ReactJointJS extends Component {
             'onAll',
             'onCellPointerClick',
             'onBlankPointerClick',
-        ]
-            .forEach(method => {
+        ].forEach(method => {
                 this[method] = this[method].bind(this);
-            });
+        });
     }
 
     componentDidMount() {
