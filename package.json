@@ -46,6 +46,7 @@
     "react": "^0.13.0 || ^0.14.0"
   },
   "dependencies": {
-    "jointjs": "^0.9.7"
+    "jointjs": "^0.9.7",
+    "lodash": "^4.3.0"
   }
 }

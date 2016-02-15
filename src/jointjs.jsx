@@ -1,4 +1,5 @@
 import jointjs from 'jointjs';
+import _ from 'lodash';
 import React, { Component, PropTypes } from 'react';
 
 export default class ReactJointJS extends Component {
