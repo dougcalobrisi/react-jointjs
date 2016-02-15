@@ -4,13 +4,6 @@ import React, { Component, PropTypes } from 'react';
 export default class ReactJointJS extends Component {
     constructor(props) {
         super(props);
-        [
-            'onAll',
-            'onCellPointerClick',
-            'onBlankPointerClick',
-        ].forEach(method => {
-                this[method] = this[method].bind(this);
-        });
     }
 
     componentDidMount() {
@@ -41,6 +34,8 @@ export default class ReactJointJS extends Component {
             validateConnection: validateConnection
         });
         this.graph.fromJSON(graphJSON);
+
+        this.setupEventListeners();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -56,23 +51,24 @@ export default class ReactJointJS extends Component {
         this.graph = null;
     }
 
-    onAll(e, data) {
-        if(this.props.onAll) {
-            this.props.onAll(e, data);
+    setupEventListeners() {
+        if(_.isFunction(this.props.onAll)) {
+            this.graph.on('all', (e, data) => {
+                this.props.onAll(e, data);
+            });
+        }
+        if(_.isFunction(this.props.onCellPointerClick)) {
+            this.paper.on('cell:pointerclick', (cellView, e, x, y) => {
+                this.props.onCellPointerClick(cellView, e, x, y);
+            });
+        }
+        if(_.isFunction(this.props.onBlankPointerClick)) {
+            this.paper.on('blank:pointerclick', (e, x, y) => {
+                this.props.onBlankPointerClick(e, x, y);
+            });
         }
     }
 
-    onCellPointerClick(cellView, e, x, y) {
-        if(this.props.onCellPointerClick) {
-            this.props.onCellPointerClick(cellView, e, x, y);
-        }
-    }
-
-    onBlankPointerClick(e, x, y) {
-        if(this.props.onBlankPointerClick) {
-            this.props.onBlankPointerClick(e, x, y);
-        }
-    }
 
     render() {
         const { name, className, style } = this.props;
@@ -120,10 +116,10 @@ ReactJointJS.defaultProps = {
         return true;
     },
     validateConnection: (sourceView, sourceMagnet, targetView, targetMagnet) => {
-        return true;
+        return (sourceMagnet && targetMagnet);
     },
     graphJSON: { cells: [] },
-    onAll: (e, data) => {},
-    onCellPointerClick: (cellView, e, x, y) => {},
-    onBlankPointerClick: (e, x, y) => {},
+    onAll: null,
+    onCellPointerClick: null,
+    onBlankPointerClick: null,
 };
