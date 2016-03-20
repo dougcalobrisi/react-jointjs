@@ -7,6 +7,10 @@ export const basicShapes = {
     circle: "basic.Circle"
 };
 
+export const extentableShapes = {
+    model: "devs.Model"
+};
+
 export const erdShapes = {
     entity: "erd.Entity",
     weakEntity: "erd.WeakEntity",

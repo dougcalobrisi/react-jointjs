@@ -18,7 +18,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.jsx?$/, exclude: [/node_modules/], loaders: ['react-hot', 'babel?cacheDirectory']}
+            {test: /\.jsx?$/, exclude: [/node_modules/], loaders: ['react-hot', 'babel?cacheDirectory']},
+            {test: /\.css$/, loader: 'style!css'}
         ]
     },
     plugins: [
