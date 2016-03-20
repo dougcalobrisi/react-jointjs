@@ -35,14 +35,13 @@ export default class ReactJointJS extends Component {
             validateConnection: validateConnection
         });
         this.graph.fromJSON(graphJSON);
-
         this.setupEventListeners();
     }
 
     componentWillReceiveProps(nextProps) {
         const oldProps = this.props;
         if (nextProps.graphJSON !== oldProps.graphJSON) {
-            this.graph.fromJSON(nextProps.graphJSON);
+          this.graph.fromJSON(nextProps.graphJSON);
 
         }
     }
