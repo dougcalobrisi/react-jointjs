@@ -36,6 +36,7 @@ export default class ReactJointJS extends Component {
         });
         this.graph.fromJSON(graphJSON);
         this.setupEventListeners();
+        console.log("after component mount, g = ", jointjs.g);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -54,7 +55,7 @@ export default class ReactJointJS extends Component {
     setupEventListeners() {
         if(_.isFunction(this.props.onAll)) {
             this.graph.on('all', (e, data) => {
-                this.props.onAll(e, data);
+                this.props.onAll(e, data, jointjs.g);
             });
         }
         if(_.isFunction(this.props.onCellPointerClick)) {

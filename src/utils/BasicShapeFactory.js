@@ -2,7 +2,8 @@
  * Created by leojin on 3/20/16.
  */
 import _ from 'lodash';
-import {basicShapes} from '../jointjs.shape.constants';
+import {basicShapes, extentableShapes} from '../jointjs.shape.constants';
+import ExtendableShapeFactory from './ExtendableShapeFactory';
 
 class BasicShapeFactory {
     constructor(){}
@@ -13,6 +14,7 @@ class BasicShapeFactory {
             roundEdges=false,
             text="",
             textColor="white",
+            enablePort=false,
             strokeWidth=2,
             strokeColor="black",
             position={x: 100, y: 30},
@@ -22,12 +24,16 @@ class BasicShapeFactory {
         if(roundEdges){
             rx=ry=5;
         }
+        let type = basicShapes.rectangle;
+        if(enablePort){
+            return ExtendableShapeFactory.createDevModel(id, options);
+        }
 
         return {
             id,
             position,
             size,
-            type: basicShapes.rectangle,
+            type: type,
             attrs: {
                 rect: {
                     rx,
@@ -42,6 +48,10 @@ class BasicShapeFactory {
                 }
             }
         }
+    }
+
+    createPorts(){
+
     }
 
 }

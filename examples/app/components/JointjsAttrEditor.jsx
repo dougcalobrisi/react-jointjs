@@ -6,12 +6,15 @@ class JointjsAttrEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.onChange = this.onChange.bind(this);
     }
 
     //static react vars
     static defaultProps = {};
 
-    static propTypes = {};
+    static propTypes = {
+        onChange: React.PropTypes.func.isRequired
+    };
 
     //life cycle methods
     componentDidMount() {
@@ -20,11 +23,23 @@ class JointjsAttrEditor extends React.Component {
     componentWillUnmount() {
     }
 
+    onChange(e){
+        const {
+            name,
+            value,
+            type,
+            checked
+            } = e.currentTarget;
+        if(_.isEqual(type, "checkbox")) {
+            this.props.onChange(name, checked);
+        }
+    }
+
     render() {
         return (
-            <div>
-                <h1>Editor</h1>
-            </div>
+            <form>
+                <Input type="checkbox" name="enablePort" label="Enable ports" onChange={this.onChange}/>
+            </form>
         );
     }
 }
